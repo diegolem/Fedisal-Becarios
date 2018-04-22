@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FedisalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Becario">
+    <Key>
+      <PropertyRef Name="idBecario" />
+    </Key>
+    <Property Name="idBecario" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fechaInicio" Type="DateTime" Precision="0" />
+    <Property Name="fechaFin" Type="DateTime" Precision="0" />
+    <Property Name="idInformacion" Type="Int32" />
+    <Property Name="idPrograma" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="idUniversidad" Type="Int32" />
+    <Property Name="idCarrera" Type="Int32" />
+    <Property Name="idNivelEducativo" Type="Int32" />
+    <Property Name="contrasenna" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BitacoraIncidentes" Relationship="Self.Becario_BitacoraIncidentes" FromRole="Becario" ToRole="BitacoraIncidentes" />
+    <NavigationProperty Name="Ciclo" Relationship="Self.Becario_Ciclo" FromRole="Becario" ToRole="Ciclo" />
+    <NavigationProperty Name="PresupuestoBecas" Relationship="Self.Becario_PresupuestoBecas" FromRole="Becario" ToRole="PresupuestoBecas" />
+    <NavigationProperty Name="Carrera" Relationship="Self.Carrera_Becario" FromRole="Becario" ToRole="Carrera" />
+    <NavigationProperty Name="InformacionPersonal" Relationship="Self.InformacionPersonal_Becario" FromRole="Becario" ToRole="InformacionPersonal" />
+    <NavigationProperty Name="NivelEducativo" Relationship="Self.NivelEducativo_Becario" FromRole="Becario" ToRole="NivelEducativo" />
+    <NavigationProperty Name="ProgramaBecas" Relationship="Self.ProgramaBecas_Becario" FromRole="Becario" ToRole="ProgramaBecas" />
+    <NavigationProperty Name="Universidad" Relationship="Self.Universidad_Becario" FromRole="Becario" ToRole="Universidad" />
+  </EntityType>
+  <EntityType Name="BitacoraIncidentes">
+    <Key>
+      <PropertyRef Name="idBitacora" />
+    </Key>
+    <Property Name="idBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTipoIncidente" Type="Int32" />
+    <Property Name="idBecario" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Becario" Relationship="Self.Becario_BitacoraIncidentes" FromRole="BitacoraIncidentes" ToRole="Becario" />
+    <NavigationProperty Name="TipoIncidente" Relationship="Self.TipoIncidente_BitacoraIncidentes" FromRole="BitacoraIncidentes" ToRole="TipoIncidente" />
+  </EntityType>
+  <EntityType Name="Carrera">
+    <Key>
+      <PropertyRef Name="idCarrera" />
+    </Key>
+    <Property Name="idCarrera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Becario" Relationship="Self.Carrera_Becario" FromRole="Carrera" ToRole="Becario" />
+  </EntityType>
+  <EntityType Name="Ciclo">
+    <Key>
+      <PropertyRef Name="idCiclo" />
+    </Key>
+    <Property Name="idCiclo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="anio" Type="Decimal" Precision="4" Scale="0" />
+    <Property Name="nCiclo" Type="Int32" />
+    <Property Name="evidenciaNotas" Type="Boolean" />
+    <Property Name="idBecario" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Becario" Relationship="Self.Becario_Ciclo" FromRole="Ciclo" ToRole="Becario" />
+    <NavigationProperty Name="Nota" Relationship="Self.Ciclo_Nota" FromRole="Ciclo" ToRole="Nota" />
+    <NavigationProperty Name="Desembolso" Relationship="Self.fk_desembolso_ciclo" FromRole="Ciclo" ToRole="Desembolso" />
+  </EntityType>
+  <EntityType Name="Desembolso">
+    <Key>
+      <PropertyRef Name="idDesembolso" />
+    </Key>
+    <Property Name="idDesembolso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="monto" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="idTipoDesembolso" Type="Int32" />
+    <Property Name="idCiclo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ciclo" Relationship="Self.fk_desembolso_ciclo" FromRole="Desembolso" ToRole="Ciclo" />
+    <NavigationProperty Name="TipoDesembolso" Relationship="Self.TipoDesembolso_Desembolso" FromRole="Desembolso" ToRole="TipoDesembolso" />
+  </EntityType>
+  <EntityType Name="InformacionPersonal">
+    <Key>
+      <PropertyRef Name="idInformacion" />
+    </Key>
+    <Property Name="idInformacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombres" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="apellidos" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="dui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="fechaNacimiento" Type="DateTime" Precision="0" />
+    <Property Name="direccionResidencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="correoElectronico" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Becario" Relationship="Self.InformacionPersonal_Becario" FromRole="InformacionPersonal" ToRole="Becario" />
+  </EntityType>
+  <EntityType Name="NivelEducativo">
+    <Key>
+      <PropertyRef Name="idNivelEducativo" />
+    </Key>
+    <Property Name="idNivelEducativo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Becario" Relationship="Self.NivelEducativo_Becario" FromRole="NivelEducativo" ToRole="Becario" />
+  </EntityType>
+  <EntityType Name="Nota">
+    <Key>
+      <PropertyRef Name="idNota" />
+    </Key>
+    <Property Name="idNota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreMateria" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="nota1" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="cumplioTercio" Type="Boolean" />
+    <Property Name="idCiclo" Type="Int32" />
+    <NavigationProperty Name="Ciclo" Relationship="Self.Ciclo_Nota" FromRole="Nota" ToRole="Ciclo" />
+  </EntityType>
+  <EntityType Name="PresupuestoBecas">
+    <Key>
+      <PropertyRef Name="idPresupuesto" />
+    </Key>
+    <Property Name="idPresupuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libro" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="colegiatura" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="manutencion" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="matricula" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="otros" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="trabajoGraduacion" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="idBecario" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Becario" Relationship="Self.Becario_PresupuestoBecas" FromRole="PresupuestoBecas" ToRole="Becario" />
+  </EntityType>
+  <EntityType Name="ProgramaBecas">
+    <Key>
+      <PropertyRef Name="idPrograma" />
+    </Key>
+    <Property Name="idPrograma" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Becario" Relationship="Self.ProgramaBecas_Becario" FromRole="ProgramaBecas" ToRole="Becario" />
+  </EntityType>
+  <EntityType Name="TipoDesembolso">
+    <Key>
+      <PropertyRef Name="idTipoDesembolso" />
+    </Key>
+    <Property Name="idTipoDesembolso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Desembolso" Relationship="Self.TipoDesembolso_Desembolso" FromRole="TipoDesembolso" ToRole="Desembolso" />
+  </EntityType>
+  <EntityType Name="TipoIncidente">
+    <Key>
+      <PropertyRef Name="idTipoIncidente" />
+    </Key>
+    <Property Name="idTipoIncidente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BitacoraIncidentes" Relationship="Self.TipoIncidente_BitacoraIncidentes" FromRole="TipoIncidente" ToRole="BitacoraIncidentes" />
+  </EntityType>
+  <EntityType Name="Universidad">
+    <Key>
+      <PropertyRef Name="idUniversidad" />
+    </Key>
+    <Property Name="idUniversidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Becario" Relationship="Self.Universidad_Becario" FromRole="Universidad" ToRole="Becario" />
+  </EntityType>
+  <Association Name="Becario_BitacoraIncidentes">
+    <End Role="Becario" Type="Self.Becario" Multiplicity="0..1" />
+    <End Role="BitacoraIncidentes" Type="Self.BitacoraIncidentes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Becario">
+        <PropertyRef Name="idBecario" />
+      </Principal>
+      <Dependent Role="BitacoraIncidentes">
+        <PropertyRef Name="idBecario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Becario_Ciclo">
+    <End Role="Becario" Type="Self.Becario" Multiplicity="0..1" />
+    <End Role="Ciclo" Type="Self.Ciclo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Becario">
+        <PropertyRef Name="idBecario" />
+      </Principal>
+      <Dependent Role="Ciclo">
+        <PropertyRef Name="idBecario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Becario_PresupuestoBecas">
+    <End Role="Becario" Type="Self.Becario" Multiplicity="0..1" />
+    <End Role="PresupuestoBecas" Type="Self.PresupuestoBecas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Becario">
+        <PropertyRef Name="idBecario" />
+      </Principal>
+      <Dependent Role="PresupuestoBecas">
+        <PropertyRef Name="idBecario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Carrera_Becario">
+    <End Role="Carrera" Type="Self.Carrera" Multiplicity="0..1" />
+    <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carrera">
+        <PropertyRef Name="idCarrera" />
+      </Principal>
+      <Dependent Role="Becario">
+        <PropertyRef Name="idCarrera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InformacionPersonal_Becario">
+    <End Role="InformacionPersonal" Type="Self.InformacionPersonal" Multiplicity="0..1" />
+    <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InformacionPersonal">
+        <PropertyRef Name="idInformacion" />
+      </Principal>
+      <Dependent Role="Becario">
+        <PropertyRef Name="idInformacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NivelEducativo_Becario">
+    <End Role="NivelEducativo" Type="Self.NivelEducativo" Multiplicity="0..1" />
+    <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NivelEducativo">
+        <PropertyRef Name="idNivelEducativo" />
+      </Principal>
+      <Dependent Role="Becario">
+        <PropertyRef Name="idNivelEducativo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProgramaBecas_Becario">
+    <End Role="ProgramaBecas" Type="Self.ProgramaBecas" Multiplicity="0..1" />
+    <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProgramaBecas">
+        <PropertyRef Name="idPrograma" />
+      </Principal>
+      <Dependent Role="Becario">
+        <PropertyRef Name="idPrograma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Universidad_Becario">
+    <End Role="Universidad" Type="Self.Universidad" Multiplicity="0..1" />
+    <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Universidad">
+        <PropertyRef Name="idUniversidad" />
+      </Principal>
+      <Dependent Role="Becario">
+        <PropertyRef Name="idUniversidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TipoIncidente_BitacoraIncidentes">
+    <End Role="TipoIncidente" Type="Self.TipoIncidente" Multiplicity="0..1" />
+    <End Role="BitacoraIncidentes" Type="Self.BitacoraIncidentes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoIncidente">
+        <PropertyRef Name="idTipoIncidente" />
+      </Principal>
+      <Dependent Role="BitacoraIncidentes">
+        <PropertyRef Name="idTipoIncidente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Ciclo_Nota">
+    <End Role="Ciclo" Type="Self.Ciclo" Multiplicity="0..1" />
+    <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciclo">
+        <PropertyRef Name="idCiclo" />
+      </Principal>
+      <Dependent Role="Nota">
+        <PropertyRef Name="idCiclo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_desembolso_ciclo">
+    <End Role="Ciclo" Type="Self.Ciclo" Multiplicity="1" />
+    <End Role="Desembolso" Type="Self.Desembolso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciclo">
+        <PropertyRef Name="idCiclo" />
+      </Principal>
+      <Dependent Role="Desembolso">
+        <PropertyRef Name="idCiclo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TipoDesembolso_Desembolso">
+    <End Role="TipoDesembolso" Type="Self.TipoDesembolso" Multiplicity="0..1" />
+    <End Role="Desembolso" Type="Self.Desembolso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoDesembolso">
+        <PropertyRef Name="idTipoDesembolso" />
+      </Principal>
+      <Dependent Role="Desembolso">
+        <PropertyRef Name="idTipoDesembolso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FedisalEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Becario" EntityType="Self.Becario" />
+    <EntitySet Name="BitacoraIncidentes" EntityType="Self.BitacoraIncidentes" />
+    <EntitySet Name="Carrera" EntityType="Self.Carrera" />
+    <EntitySet Name="Ciclo" EntityType="Self.Ciclo" />
+    <EntitySet Name="Desembolso" EntityType="Self.Desembolso" />
+    <EntitySet Name="InformacionPersonal" EntityType="Self.InformacionPersonal" />
+    <EntitySet Name="NivelEducativo" EntityType="Self.NivelEducativo" />
+    <EntitySet Name="Nota" EntityType="Self.Nota" />
+    <EntitySet Name="PresupuestoBecas" EntityType="Self.PresupuestoBecas" />
+    <EntitySet Name="ProgramaBecas" EntityType="Self.ProgramaBecas" />
+    <EntitySet Name="TipoDesembolso" EntityType="Self.TipoDesembolso" />
+    <EntitySet Name="TipoIncidente" EntityType="Self.TipoIncidente" />
+    <EntitySet Name="Universidad" EntityType="Self.Universidad" />
+    <AssociationSet Name="Becario_BitacoraIncidentes" Association="Self.Becario_BitacoraIncidentes">
+      <End Role="Becario" EntitySet="Becario" />
+      <End Role="BitacoraIncidentes" EntitySet="BitacoraIncidentes" />
+    </AssociationSet>
+    <AssociationSet Name="Becario_Ciclo" Association="Self.Becario_Ciclo">
+      <End Role="Becario" EntitySet="Becario" />
+      <End Role="Ciclo" EntitySet="Ciclo" />
+    </AssociationSet>
+    <AssociationSet Name="Becario_PresupuestoBecas" Association="Self.Becario_PresupuestoBecas">
+      <End Role="Becario" EntitySet="Becario" />
+      <End Role="PresupuestoBecas" EntitySet="PresupuestoBecas" />
+    </AssociationSet>
+    <AssociationSet Name="Carrera_Becario" Association="Self.Carrera_Becario">
+      <End Role="Carrera" EntitySet="Carrera" />
+      <End Role="Becario" EntitySet="Becario" />
+    </AssociationSet>
+    <AssociationSet Name="InformacionPersonal_Becario" Association="Self.InformacionPersonal_Becario">
+      <End Role="InformacionPersonal" EntitySet="InformacionPersonal" />
+      <End Role="Becario" EntitySet="Becario" />
+    </AssociationSet>
+    <AssociationSet Name="NivelEducativo_Becario" Association="Self.NivelEducativo_Becario">
+      <End Role="NivelEducativo" EntitySet="NivelEducativo" />
+      <End Role="Becario" EntitySet="Becario" />
+    </AssociationSet>
+    <AssociationSet Name="ProgramaBecas_Becario" Association="Self.ProgramaBecas_Becario">
+      <End Role="ProgramaBecas" EntitySet="ProgramaBecas" />
+      <End Role="Becario" EntitySet="Becario" />
+    </AssociationSet>
+    <AssociationSet Name="Universidad_Becario" Association="Self.Universidad_Becario">
+      <End Role="Universidad" EntitySet="Universidad" />
+      <End Role="Becario" EntitySet="Becario" />
+    </AssociationSet>
+    <AssociationSet Name="TipoIncidente_BitacoraIncidentes" Association="Self.TipoIncidente_BitacoraIncidentes">
+      <End Role="TipoIncidente" EntitySet="TipoIncidente" />
+      <End Role="BitacoraIncidentes" EntitySet="BitacoraIncidentes" />
+    </AssociationSet>
+    <AssociationSet Name="Ciclo_Nota" Association="Self.Ciclo_Nota">
+      <End Role="Ciclo" EntitySet="Ciclo" />
+      <End Role="Nota" EntitySet="Nota" />
+    </AssociationSet>
+    <AssociationSet Name="fk_desembolso_ciclo" Association="Self.fk_desembolso_ciclo">
+      <End Role="Ciclo" EntitySet="Ciclo" />
+      <End Role="Desembolso" EntitySet="Desembolso" />
+    </AssociationSet>
+    <AssociationSet Name="TipoDesembolso_Desembolso" Association="Self.TipoDesembolso_Desembolso">
+      <End Role="TipoDesembolso" EntitySet="TipoDesembolso" />
+      <End Role="Desembolso" EntitySet="Desembolso" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

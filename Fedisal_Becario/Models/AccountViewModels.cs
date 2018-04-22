@@ -49,6 +49,9 @@ namespace Fedisal_Becario.Models
     public class LoginViewModel
     {
         [Required]
+        [Display(Name = "Código")]
+        [RegularExpression("^[A-Z]{4}20[0-9]{2}[0-9]{3}$", ErrorMessage = "Ingrese un codigo valido")]
+        public string Codigo { get; set; }
         [Display(Name = "Correo electrónico")]
         [EmailAddress]
         public string Email { get; set; }
@@ -60,6 +63,8 @@ namespace Fedisal_Becario.Models
 
         [Display(Name = "¿Recordar cuenta?")]
         public bool RememberMe { get; set; }
+
+        public string LoginErrorMessage { get; set; }
     }
 
     public class RegisterViewModel

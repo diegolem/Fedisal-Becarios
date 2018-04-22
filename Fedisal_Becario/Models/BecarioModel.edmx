@@ -1,0 +1,868 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FedisalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Becario">
+          <Key>
+            <PropertyRef Name="idBecario" />
+          </Key>
+          <Property Name="idBecario" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="fechaInicio" Type="date" />
+          <Property Name="fechaFin" Type="date" />
+          <Property Name="idInformacion" Type="int" />
+          <Property Name="idPrograma" Type="char" MaxLength="4" />
+          <Property Name="idUniversidad" Type="int" />
+          <Property Name="idCarrera" Type="int" />
+          <Property Name="idNivelEducativo" Type="int" />
+          <Property Name="contrasenna" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BitacoraIncidentes">
+          <Key>
+            <PropertyRef Name="idBitacora" />
+          </Key>
+          <Property Name="idBitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTipoIncidente" Type="int" />
+          <Property Name="idBecario" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="Carrera">
+          <Key>
+            <PropertyRef Name="idCarrera" />
+          </Key>
+          <Property Name="idCarrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Ciclo">
+          <Key>
+            <PropertyRef Name="idCiclo" />
+          </Key>
+          <Property Name="idCiclo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="anio" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="nCiclo" Type="int" />
+          <Property Name="evidenciaNotas" Type="bit" />
+          <Property Name="idBecario" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="Desembolso">
+          <Key>
+            <PropertyRef Name="idDesembolso" />
+          </Key>
+          <Property Name="idDesembolso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="monto" Type="money" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="idTipoDesembolso" Type="int" />
+          <Property Name="idCiclo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InformacionPersonal">
+          <Key>
+            <PropertyRef Name="idInformacion" />
+          </Key>
+          <Property Name="idInformacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombres" Type="varchar" MaxLength="80" />
+          <Property Name="apellidos" Type="varchar" MaxLength="80" />
+          <Property Name="dui" Type="varchar" MaxLength="10" />
+          <Property Name="fechaNacimiento" Type="date" />
+          <Property Name="direccionResidencia" Type="varchar" MaxLength="100" />
+          <Property Name="telefono" Type="varchar" MaxLength="9" />
+          <Property Name="correoElectronico" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="NivelEducativo">
+          <Key>
+            <PropertyRef Name="idNivelEducativo" />
+          </Key>
+          <Property Name="idNivelEducativo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="80" />
+          <Property Name="descripcion" Type="varchar" MaxLength="120" />
+        </EntityType>
+        <EntityType Name="Nota">
+          <Key>
+            <PropertyRef Name="idNota" />
+          </Key>
+          <Property Name="idNota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreMateria" Type="varchar" MaxLength="40" />
+          <Property Name="nota" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cumplioTercio" Type="bit" />
+          <Property Name="idCiclo" Type="int" />
+        </EntityType>
+        <EntityType Name="PresupuestoBecas">
+          <Key>
+            <PropertyRef Name="idPresupuesto" />
+          </Key>
+          <Property Name="idPresupuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libro" Type="money" />
+          <Property Name="colegiatura" Type="money" />
+          <Property Name="manutencion" Type="money" />
+          <Property Name="matricula" Type="money" />
+          <Property Name="otros" Type="money" />
+          <Property Name="trabajoGraduacion" Type="money" />
+          <Property Name="idBecario" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="ProgramaBecas">
+          <Key>
+            <PropertyRef Name="idPrograma" />
+          </Key>
+          <Property Name="idPrograma" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="40" />
+          <Property Name="descripcion" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="TipoDesembolso">
+          <Key>
+            <PropertyRef Name="idTipoDesembolso" />
+          </Key>
+          <Property Name="idTipoDesembolso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="TipoIncidente">
+          <Key>
+            <PropertyRef Name="idTipoIncidente" />
+          </Key>
+          <Property Name="idTipoIncidente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="40" />
+          <Property Name="descripcion" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Universidad">
+          <Key>
+            <PropertyRef Name="idUniversidad" />
+          </Key>
+          <Property Name="idUniversidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="80" />
+          <Property Name="direccion" Type="varchar" MaxLength="100" />
+          <Property Name="telefono" Type="varchar" MaxLength="9" />
+        </EntityType>
+        <Association Name="Becario_BitacoraIncidentes">
+          <End Role="Becario" Type="Self.Becario" Multiplicity="0..1" />
+          <End Role="BitacoraIncidentes" Type="Self.BitacoraIncidentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Becario">
+              <PropertyRef Name="idBecario" />
+            </Principal>
+            <Dependent Role="BitacoraIncidentes">
+              <PropertyRef Name="idBecario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Becario_Ciclo">
+          <End Role="Becario" Type="Self.Becario" Multiplicity="0..1" />
+          <End Role="Ciclo" Type="Self.Ciclo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Becario">
+              <PropertyRef Name="idBecario" />
+            </Principal>
+            <Dependent Role="Ciclo">
+              <PropertyRef Name="idBecario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Becario_PresupuestoBecas">
+          <End Role="Becario" Type="Self.Becario" Multiplicity="0..1" />
+          <End Role="PresupuestoBecas" Type="Self.PresupuestoBecas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Becario">
+              <PropertyRef Name="idBecario" />
+            </Principal>
+            <Dependent Role="PresupuestoBecas">
+              <PropertyRef Name="idBecario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Carrera_Becario">
+          <End Role="Carrera" Type="Self.Carrera" Multiplicity="0..1" />
+          <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carrera">
+              <PropertyRef Name="idCarrera" />
+            </Principal>
+            <Dependent Role="Becario">
+              <PropertyRef Name="idCarrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ciclo_Nota">
+          <End Role="Ciclo" Type="Self.Ciclo" Multiplicity="0..1" />
+          <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciclo">
+              <PropertyRef Name="idCiclo" />
+            </Principal>
+            <Dependent Role="Nota">
+              <PropertyRef Name="idCiclo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_desembolso_ciclo">
+          <End Role="Ciclo" Type="Self.Ciclo" Multiplicity="1" />
+          <End Role="Desembolso" Type="Self.Desembolso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciclo">
+              <PropertyRef Name="idCiclo" />
+            </Principal>
+            <Dependent Role="Desembolso">
+              <PropertyRef Name="idCiclo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="InformacionPersonal_Becario">
+          <End Role="InformacionPersonal" Type="Self.InformacionPersonal" Multiplicity="0..1" />
+          <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InformacionPersonal">
+              <PropertyRef Name="idInformacion" />
+            </Principal>
+            <Dependent Role="Becario">
+              <PropertyRef Name="idInformacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="NivelEducativo_Becario">
+          <End Role="NivelEducativo" Type="Self.NivelEducativo" Multiplicity="0..1" />
+          <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelEducativo">
+              <PropertyRef Name="idNivelEducativo" />
+            </Principal>
+            <Dependent Role="Becario">
+              <PropertyRef Name="idNivelEducativo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProgramaBecas_Becario">
+          <End Role="ProgramaBecas" Type="Self.ProgramaBecas" Multiplicity="0..1" />
+          <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramaBecas">
+              <PropertyRef Name="idPrograma" />
+            </Principal>
+            <Dependent Role="Becario">
+              <PropertyRef Name="idPrograma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TipoDesembolso_Desembolso">
+          <End Role="TipoDesembolso" Type="Self.TipoDesembolso" Multiplicity="0..1" />
+          <End Role="Desembolso" Type="Self.Desembolso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDesembolso">
+              <PropertyRef Name="idTipoDesembolso" />
+            </Principal>
+            <Dependent Role="Desembolso">
+              <PropertyRef Name="idTipoDesembolso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TipoIncidente_BitacoraIncidentes">
+          <End Role="TipoIncidente" Type="Self.TipoIncidente" Multiplicity="0..1" />
+          <End Role="BitacoraIncidentes" Type="Self.BitacoraIncidentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIncidente">
+              <PropertyRef Name="idTipoIncidente" />
+            </Principal>
+            <Dependent Role="BitacoraIncidentes">
+              <PropertyRef Name="idTipoIncidente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Universidad_Becario">
+          <End Role="Universidad" Type="Self.Universidad" Multiplicity="0..1" />
+          <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Universidad">
+              <PropertyRef Name="idUniversidad" />
+            </Principal>
+            <Dependent Role="Becario">
+              <PropertyRef Name="idUniversidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FedisalModelStoreContainer">
+          <EntitySet Name="Becario" EntityType="Self.Becario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BitacoraIncidentes" EntityType="Self.BitacoraIncidentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carrera" EntityType="Self.Carrera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciclo" EntityType="Self.Ciclo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Desembolso" EntityType="Self.Desembolso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InformacionPersonal" EntityType="Self.InformacionPersonal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NivelEducativo" EntityType="Self.NivelEducativo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nota" EntityType="Self.Nota" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PresupuestoBecas" EntityType="Self.PresupuestoBecas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramaBecas" EntityType="Self.ProgramaBecas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDesembolso" EntityType="Self.TipoDesembolso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoIncidente" EntityType="Self.TipoIncidente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Universidad" EntityType="Self.Universidad" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Becario_BitacoraIncidentes" Association="Self.Becario_BitacoraIncidentes">
+            <End Role="Becario" EntitySet="Becario" />
+            <End Role="BitacoraIncidentes" EntitySet="BitacoraIncidentes" />
+          </AssociationSet>
+          <AssociationSet Name="Becario_Ciclo" Association="Self.Becario_Ciclo">
+            <End Role="Becario" EntitySet="Becario" />
+            <End Role="Ciclo" EntitySet="Ciclo" />
+          </AssociationSet>
+          <AssociationSet Name="Becario_PresupuestoBecas" Association="Self.Becario_PresupuestoBecas">
+            <End Role="Becario" EntitySet="Becario" />
+            <End Role="PresupuestoBecas" EntitySet="PresupuestoBecas" />
+          </AssociationSet>
+          <AssociationSet Name="Carrera_Becario" Association="Self.Carrera_Becario">
+            <End Role="Carrera" EntitySet="Carrera" />
+            <End Role="Becario" EntitySet="Becario" />
+          </AssociationSet>
+          <AssociationSet Name="Ciclo_Nota" Association="Self.Ciclo_Nota">
+            <End Role="Ciclo" EntitySet="Ciclo" />
+            <End Role="Nota" EntitySet="Nota" />
+          </AssociationSet>
+          <AssociationSet Name="fk_desembolso_ciclo" Association="Self.fk_desembolso_ciclo">
+            <End Role="Ciclo" EntitySet="Ciclo" />
+            <End Role="Desembolso" EntitySet="Desembolso" />
+          </AssociationSet>
+          <AssociationSet Name="InformacionPersonal_Becario" Association="Self.InformacionPersonal_Becario">
+            <End Role="InformacionPersonal" EntitySet="InformacionPersonal" />
+            <End Role="Becario" EntitySet="Becario" />
+          </AssociationSet>
+          <AssociationSet Name="NivelEducativo_Becario" Association="Self.NivelEducativo_Becario">
+            <End Role="NivelEducativo" EntitySet="NivelEducativo" />
+            <End Role="Becario" EntitySet="Becario" />
+          </AssociationSet>
+          <AssociationSet Name="ProgramaBecas_Becario" Association="Self.ProgramaBecas_Becario">
+            <End Role="ProgramaBecas" EntitySet="ProgramaBecas" />
+            <End Role="Becario" EntitySet="Becario" />
+          </AssociationSet>
+          <AssociationSet Name="TipoDesembolso_Desembolso" Association="Self.TipoDesembolso_Desembolso">
+            <End Role="TipoDesembolso" EntitySet="TipoDesembolso" />
+            <End Role="Desembolso" EntitySet="Desembolso" />
+          </AssociationSet>
+          <AssociationSet Name="TipoIncidente_BitacoraIncidentes" Association="Self.TipoIncidente_BitacoraIncidentes">
+            <End Role="TipoIncidente" EntitySet="TipoIncidente" />
+            <End Role="BitacoraIncidentes" EntitySet="BitacoraIncidentes" />
+          </AssociationSet>
+          <AssociationSet Name="Universidad_Becario" Association="Self.Universidad_Becario">
+            <End Role="Universidad" EntitySet="Universidad" />
+            <End Role="Becario" EntitySet="Becario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FedisalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Becario">
+          <Key>
+            <PropertyRef Name="idBecario" />
+          </Key>
+          <Property Name="idBecario" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="fechaFin" Type="DateTime" Precision="0" />
+          <Property Name="idInformacion" Type="Int32" />
+          <Property Name="idPrograma" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="idUniversidad" Type="Int32" />
+          <Property Name="idCarrera" Type="Int32" />
+          <Property Name="idNivelEducativo" Type="Int32" />
+          <Property Name="contrasenna" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BitacoraIncidentes" Relationship="Self.Becario_BitacoraIncidentes" FromRole="Becario" ToRole="BitacoraIncidentes" />
+          <NavigationProperty Name="Ciclo" Relationship="Self.Becario_Ciclo" FromRole="Becario" ToRole="Ciclo" />
+          <NavigationProperty Name="PresupuestoBecas" Relationship="Self.Becario_PresupuestoBecas" FromRole="Becario" ToRole="PresupuestoBecas" />
+          <NavigationProperty Name="Carrera" Relationship="Self.Carrera_Becario" FromRole="Becario" ToRole="Carrera" />
+          <NavigationProperty Name="InformacionPersonal" Relationship="Self.InformacionPersonal_Becario" FromRole="Becario" ToRole="InformacionPersonal" />
+          <NavigationProperty Name="NivelEducativo" Relationship="Self.NivelEducativo_Becario" FromRole="Becario" ToRole="NivelEducativo" />
+          <NavigationProperty Name="ProgramaBecas" Relationship="Self.ProgramaBecas_Becario" FromRole="Becario" ToRole="ProgramaBecas" />
+          <NavigationProperty Name="Universidad" Relationship="Self.Universidad_Becario" FromRole="Becario" ToRole="Universidad" />
+        </EntityType>
+        <EntityType Name="BitacoraIncidentes">
+          <Key>
+            <PropertyRef Name="idBitacora" />
+          </Key>
+          <Property Name="idBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoIncidente" Type="Int32" />
+          <Property Name="idBecario" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Becario" Relationship="Self.Becario_BitacoraIncidentes" FromRole="BitacoraIncidentes" ToRole="Becario" />
+          <NavigationProperty Name="TipoIncidente" Relationship="Self.TipoIncidente_BitacoraIncidentes" FromRole="BitacoraIncidentes" ToRole="TipoIncidente" />
+        </EntityType>
+        <EntityType Name="Carrera">
+          <Key>
+            <PropertyRef Name="idCarrera" />
+          </Key>
+          <Property Name="idCarrera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Becario" Relationship="Self.Carrera_Becario" FromRole="Carrera" ToRole="Becario" />
+        </EntityType>
+        <EntityType Name="Ciclo">
+          <Key>
+            <PropertyRef Name="idCiclo" />
+          </Key>
+          <Property Name="idCiclo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="anio" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="nCiclo" Type="Int32" />
+          <Property Name="evidenciaNotas" Type="Boolean" />
+          <Property Name="idBecario" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Becario" Relationship="Self.Becario_Ciclo" FromRole="Ciclo" ToRole="Becario" />
+          <NavigationProperty Name="Nota" Relationship="Self.Ciclo_Nota" FromRole="Ciclo" ToRole="Nota" />
+          <NavigationProperty Name="Desembolso" Relationship="Self.fk_desembolso_ciclo" FromRole="Ciclo" ToRole="Desembolso" />
+        </EntityType>
+        <EntityType Name="Desembolso">
+          <Key>
+            <PropertyRef Name="idDesembolso" />
+          </Key>
+          <Property Name="idDesembolso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="monto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="idTipoDesembolso" Type="Int32" />
+          <Property Name="idCiclo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ciclo" Relationship="Self.fk_desembolso_ciclo" FromRole="Desembolso" ToRole="Ciclo" />
+          <NavigationProperty Name="TipoDesembolso" Relationship="Self.TipoDesembolso_Desembolso" FromRole="Desembolso" ToRole="TipoDesembolso" />
+        </EntityType>
+        <EntityType Name="InformacionPersonal">
+          <Key>
+            <PropertyRef Name="idInformacion" />
+          </Key>
+          <Property Name="idInformacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombres" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="apellidos" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="dui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="direccionResidencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="correoElectronico" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Becario" Relationship="Self.InformacionPersonal_Becario" FromRole="InformacionPersonal" ToRole="Becario" />
+        </EntityType>
+        <EntityType Name="NivelEducativo">
+          <Key>
+            <PropertyRef Name="idNivelEducativo" />
+          </Key>
+          <Property Name="idNivelEducativo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Becario" Relationship="Self.NivelEducativo_Becario" FromRole="NivelEducativo" ToRole="Becario" />
+        </EntityType>
+        <EntityType Name="Nota">
+          <Key>
+            <PropertyRef Name="idNota" />
+          </Key>
+          <Property Name="idNota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreMateria" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="nota1" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cumplioTercio" Type="Boolean" />
+          <Property Name="idCiclo" Type="Int32" />
+          <NavigationProperty Name="Ciclo" Relationship="Self.Ciclo_Nota" FromRole="Nota" ToRole="Ciclo" />
+        </EntityType>
+        <EntityType Name="PresupuestoBecas">
+          <Key>
+            <PropertyRef Name="idPresupuesto" />
+          </Key>
+          <Property Name="idPresupuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libro" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="colegiatura" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="manutencion" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="matricula" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="otros" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="trabajoGraduacion" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="idBecario" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Becario" Relationship="Self.Becario_PresupuestoBecas" FromRole="PresupuestoBecas" ToRole="Becario" />
+        </EntityType>
+        <EntityType Name="ProgramaBecas">
+          <Key>
+            <PropertyRef Name="idPrograma" />
+          </Key>
+          <Property Name="idPrograma" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Becario" Relationship="Self.ProgramaBecas_Becario" FromRole="ProgramaBecas" ToRole="Becario" />
+        </EntityType>
+        <EntityType Name="TipoDesembolso">
+          <Key>
+            <PropertyRef Name="idTipoDesembolso" />
+          </Key>
+          <Property Name="idTipoDesembolso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Desembolso" Relationship="Self.TipoDesembolso_Desembolso" FromRole="TipoDesembolso" ToRole="Desembolso" />
+        </EntityType>
+        <EntityType Name="TipoIncidente">
+          <Key>
+            <PropertyRef Name="idTipoIncidente" />
+          </Key>
+          <Property Name="idTipoIncidente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BitacoraIncidentes" Relationship="Self.TipoIncidente_BitacoraIncidentes" FromRole="TipoIncidente" ToRole="BitacoraIncidentes" />
+        </EntityType>
+        <EntityType Name="Universidad">
+          <Key>
+            <PropertyRef Name="idUniversidad" />
+          </Key>
+          <Property Name="idUniversidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Becario" Relationship="Self.Universidad_Becario" FromRole="Universidad" ToRole="Becario" />
+        </EntityType>
+        <Association Name="Becario_BitacoraIncidentes">
+          <End Role="Becario" Type="Self.Becario" Multiplicity="0..1" />
+          <End Role="BitacoraIncidentes" Type="Self.BitacoraIncidentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Becario">
+              <PropertyRef Name="idBecario" />
+            </Principal>
+            <Dependent Role="BitacoraIncidentes">
+              <PropertyRef Name="idBecario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Becario_Ciclo">
+          <End Role="Becario" Type="Self.Becario" Multiplicity="0..1" />
+          <End Role="Ciclo" Type="Self.Ciclo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Becario">
+              <PropertyRef Name="idBecario" />
+            </Principal>
+            <Dependent Role="Ciclo">
+              <PropertyRef Name="idBecario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Becario_PresupuestoBecas">
+          <End Role="Becario" Type="Self.Becario" Multiplicity="0..1" />
+          <End Role="PresupuestoBecas" Type="Self.PresupuestoBecas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Becario">
+              <PropertyRef Name="idBecario" />
+            </Principal>
+            <Dependent Role="PresupuestoBecas">
+              <PropertyRef Name="idBecario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Carrera_Becario">
+          <End Role="Carrera" Type="Self.Carrera" Multiplicity="0..1" />
+          <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carrera">
+              <PropertyRef Name="idCarrera" />
+            </Principal>
+            <Dependent Role="Becario">
+              <PropertyRef Name="idCarrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="InformacionPersonal_Becario">
+          <End Role="InformacionPersonal" Type="Self.InformacionPersonal" Multiplicity="0..1" />
+          <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InformacionPersonal">
+              <PropertyRef Name="idInformacion" />
+            </Principal>
+            <Dependent Role="Becario">
+              <PropertyRef Name="idInformacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="NivelEducativo_Becario">
+          <End Role="NivelEducativo" Type="Self.NivelEducativo" Multiplicity="0..1" />
+          <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelEducativo">
+              <PropertyRef Name="idNivelEducativo" />
+            </Principal>
+            <Dependent Role="Becario">
+              <PropertyRef Name="idNivelEducativo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProgramaBecas_Becario">
+          <End Role="ProgramaBecas" Type="Self.ProgramaBecas" Multiplicity="0..1" />
+          <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgramaBecas">
+              <PropertyRef Name="idPrograma" />
+            </Principal>
+            <Dependent Role="Becario">
+              <PropertyRef Name="idPrograma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Universidad_Becario">
+          <End Role="Universidad" Type="Self.Universidad" Multiplicity="0..1" />
+          <End Role="Becario" Type="Self.Becario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Universidad">
+              <PropertyRef Name="idUniversidad" />
+            </Principal>
+            <Dependent Role="Becario">
+              <PropertyRef Name="idUniversidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TipoIncidente_BitacoraIncidentes">
+          <End Role="TipoIncidente" Type="Self.TipoIncidente" Multiplicity="0..1" />
+          <End Role="BitacoraIncidentes" Type="Self.BitacoraIncidentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIncidente">
+              <PropertyRef Name="idTipoIncidente" />
+            </Principal>
+            <Dependent Role="BitacoraIncidentes">
+              <PropertyRef Name="idTipoIncidente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ciclo_Nota">
+          <End Role="Ciclo" Type="Self.Ciclo" Multiplicity="0..1" />
+          <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciclo">
+              <PropertyRef Name="idCiclo" />
+            </Principal>
+            <Dependent Role="Nota">
+              <PropertyRef Name="idCiclo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_desembolso_ciclo">
+          <End Role="Ciclo" Type="Self.Ciclo" Multiplicity="1" />
+          <End Role="Desembolso" Type="Self.Desembolso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciclo">
+              <PropertyRef Name="idCiclo" />
+            </Principal>
+            <Dependent Role="Desembolso">
+              <PropertyRef Name="idCiclo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TipoDesembolso_Desembolso">
+          <End Role="TipoDesembolso" Type="Self.TipoDesembolso" Multiplicity="0..1" />
+          <End Role="Desembolso" Type="Self.Desembolso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDesembolso">
+              <PropertyRef Name="idTipoDesembolso" />
+            </Principal>
+            <Dependent Role="Desembolso">
+              <PropertyRef Name="idTipoDesembolso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FedisalEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Becario" EntityType="Self.Becario" />
+          <EntitySet Name="BitacoraIncidentes" EntityType="Self.BitacoraIncidentes" />
+          <EntitySet Name="Carrera" EntityType="Self.Carrera" />
+          <EntitySet Name="Ciclo" EntityType="Self.Ciclo" />
+          <EntitySet Name="Desembolso" EntityType="Self.Desembolso" />
+          <EntitySet Name="InformacionPersonal" EntityType="Self.InformacionPersonal" />
+          <EntitySet Name="NivelEducativo" EntityType="Self.NivelEducativo" />
+          <EntitySet Name="Nota" EntityType="Self.Nota" />
+          <EntitySet Name="PresupuestoBecas" EntityType="Self.PresupuestoBecas" />
+          <EntitySet Name="ProgramaBecas" EntityType="Self.ProgramaBecas" />
+          <EntitySet Name="TipoDesembolso" EntityType="Self.TipoDesembolso" />
+          <EntitySet Name="TipoIncidente" EntityType="Self.TipoIncidente" />
+          <EntitySet Name="Universidad" EntityType="Self.Universidad" />
+          <AssociationSet Name="Becario_BitacoraIncidentes" Association="Self.Becario_BitacoraIncidentes">
+            <End Role="Becario" EntitySet="Becario" />
+            <End Role="BitacoraIncidentes" EntitySet="BitacoraIncidentes" />
+          </AssociationSet>
+          <AssociationSet Name="Becario_Ciclo" Association="Self.Becario_Ciclo">
+            <End Role="Becario" EntitySet="Becario" />
+            <End Role="Ciclo" EntitySet="Ciclo" />
+          </AssociationSet>
+          <AssociationSet Name="Becario_PresupuestoBecas" Association="Self.Becario_PresupuestoBecas">
+            <End Role="Becario" EntitySet="Becario" />
+            <End Role="PresupuestoBecas" EntitySet="PresupuestoBecas" />
+          </AssociationSet>
+          <AssociationSet Name="Carrera_Becario" Association="Self.Carrera_Becario">
+            <End Role="Carrera" EntitySet="Carrera" />
+            <End Role="Becario" EntitySet="Becario" />
+          </AssociationSet>
+          <AssociationSet Name="InformacionPersonal_Becario" Association="Self.InformacionPersonal_Becario">
+            <End Role="InformacionPersonal" EntitySet="InformacionPersonal" />
+            <End Role="Becario" EntitySet="Becario" />
+          </AssociationSet>
+          <AssociationSet Name="NivelEducativo_Becario" Association="Self.NivelEducativo_Becario">
+            <End Role="NivelEducativo" EntitySet="NivelEducativo" />
+            <End Role="Becario" EntitySet="Becario" />
+          </AssociationSet>
+          <AssociationSet Name="ProgramaBecas_Becario" Association="Self.ProgramaBecas_Becario">
+            <End Role="ProgramaBecas" EntitySet="ProgramaBecas" />
+            <End Role="Becario" EntitySet="Becario" />
+          </AssociationSet>
+          <AssociationSet Name="Universidad_Becario" Association="Self.Universidad_Becario">
+            <End Role="Universidad" EntitySet="Universidad" />
+            <End Role="Becario" EntitySet="Becario" />
+          </AssociationSet>
+          <AssociationSet Name="TipoIncidente_BitacoraIncidentes" Association="Self.TipoIncidente_BitacoraIncidentes">
+            <End Role="TipoIncidente" EntitySet="TipoIncidente" />
+            <End Role="BitacoraIncidentes" EntitySet="BitacoraIncidentes" />
+          </AssociationSet>
+          <AssociationSet Name="Ciclo_Nota" Association="Self.Ciclo_Nota">
+            <End Role="Ciclo" EntitySet="Ciclo" />
+            <End Role="Nota" EntitySet="Nota" />
+          </AssociationSet>
+          <AssociationSet Name="fk_desembolso_ciclo" Association="Self.fk_desembolso_ciclo">
+            <End Role="Ciclo" EntitySet="Ciclo" />
+            <End Role="Desembolso" EntitySet="Desembolso" />
+          </AssociationSet>
+          <AssociationSet Name="TipoDesembolso_Desembolso" Association="Self.TipoDesembolso_Desembolso">
+            <End Role="TipoDesembolso" EntitySet="TipoDesembolso" />
+            <End Role="Desembolso" EntitySet="Desembolso" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FedisalModelStoreContainer" CdmEntityContainer="FedisalEntities1">
+          <EntitySetMapping Name="Becario">
+            <EntityTypeMapping TypeName="FedisalModel.Becario">
+              <MappingFragment StoreEntitySet="Becario">
+                <ScalarProperty Name="idBecario" ColumnName="idBecario" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="idInformacion" ColumnName="idInformacion" />
+                <ScalarProperty Name="idPrograma" ColumnName="idPrograma" />
+                <ScalarProperty Name="idUniversidad" ColumnName="idUniversidad" />
+                <ScalarProperty Name="idCarrera" ColumnName="idCarrera" />
+                <ScalarProperty Name="idNivelEducativo" ColumnName="idNivelEducativo" />
+                <ScalarProperty Name="contrasenna" ColumnName="contrasenna" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BitacoraIncidentes">
+            <EntityTypeMapping TypeName="FedisalModel.BitacoraIncidentes">
+              <MappingFragment StoreEntitySet="BitacoraIncidentes">
+                <ScalarProperty Name="idBitacora" ColumnName="idBitacora" />
+                <ScalarProperty Name="idTipoIncidente" ColumnName="idTipoIncidente" />
+                <ScalarProperty Name="idBecario" ColumnName="idBecario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carrera">
+            <EntityTypeMapping TypeName="FedisalModel.Carrera">
+              <MappingFragment StoreEntitySet="Carrera">
+                <ScalarProperty Name="idCarrera" ColumnName="idCarrera" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciclo">
+            <EntityTypeMapping TypeName="FedisalModel.Ciclo">
+              <MappingFragment StoreEntitySet="Ciclo">
+                <ScalarProperty Name="idCiclo" ColumnName="idCiclo" />
+                <ScalarProperty Name="anio" ColumnName="anio" />
+                <ScalarProperty Name="nCiclo" ColumnName="nCiclo" />
+                <ScalarProperty Name="evidenciaNotas" ColumnName="evidenciaNotas" />
+                <ScalarProperty Name="idBecario" ColumnName="idBecario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Desembolso">
+            <EntityTypeMapping TypeName="FedisalModel.Desembolso">
+              <MappingFragment StoreEntitySet="Desembolso">
+                <ScalarProperty Name="idDesembolso" ColumnName="idDesembolso" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="idTipoDesembolso" ColumnName="idTipoDesembolso" />
+                <ScalarProperty Name="idCiclo" ColumnName="idCiclo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InformacionPersonal">
+            <EntityTypeMapping TypeName="FedisalModel.InformacionPersonal">
+              <MappingFragment StoreEntitySet="InformacionPersonal">
+                <ScalarProperty Name="idInformacion" ColumnName="idInformacion" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="dui" ColumnName="dui" />
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="direccionResidencia" ColumnName="direccionResidencia" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NivelEducativo">
+            <EntityTypeMapping TypeName="FedisalModel.NivelEducativo">
+              <MappingFragment StoreEntitySet="NivelEducativo">
+                <ScalarProperty Name="idNivelEducativo" ColumnName="idNivelEducativo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nota">
+            <EntityTypeMapping TypeName="FedisalModel.Nota">
+              <MappingFragment StoreEntitySet="Nota">
+                <ScalarProperty Name="idNota" ColumnName="idNota" />
+                <ScalarProperty Name="nombreMateria" ColumnName="nombreMateria" />
+                <ScalarProperty Name="nota1" ColumnName="nota" />
+                <ScalarProperty Name="cumplioTercio" ColumnName="cumplioTercio" />
+                <ScalarProperty Name="idCiclo" ColumnName="idCiclo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PresupuestoBecas">
+            <EntityTypeMapping TypeName="FedisalModel.PresupuestoBecas">
+              <MappingFragment StoreEntitySet="PresupuestoBecas">
+                <ScalarProperty Name="idPresupuesto" ColumnName="idPresupuesto" />
+                <ScalarProperty Name="libro" ColumnName="libro" />
+                <ScalarProperty Name="colegiatura" ColumnName="colegiatura" />
+                <ScalarProperty Name="manutencion" ColumnName="manutencion" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="otros" ColumnName="otros" />
+                <ScalarProperty Name="trabajoGraduacion" ColumnName="trabajoGraduacion" />
+                <ScalarProperty Name="idBecario" ColumnName="idBecario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramaBecas">
+            <EntityTypeMapping TypeName="FedisalModel.ProgramaBecas">
+              <MappingFragment StoreEntitySet="ProgramaBecas">
+                <ScalarProperty Name="idPrograma" ColumnName="idPrograma" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoDesembolso">
+            <EntityTypeMapping TypeName="FedisalModel.TipoDesembolso">
+              <MappingFragment StoreEntitySet="TipoDesembolso">
+                <ScalarProperty Name="idTipoDesembolso" ColumnName="idTipoDesembolso" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoIncidente">
+            <EntityTypeMapping TypeName="FedisalModel.TipoIncidente">
+              <MappingFragment StoreEntitySet="TipoIncidente">
+                <ScalarProperty Name="idTipoIncidente" ColumnName="idTipoIncidente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Universidad">
+            <EntityTypeMapping TypeName="FedisalModel.Universidad">
+              <MappingFragment StoreEntitySet="Universidad">
+                <ScalarProperty Name="idUniversidad" ColumnName="idUniversidad" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

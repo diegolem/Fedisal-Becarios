@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FedisalModelStoreContainer" CdmEntityContainer="FedisalEntities1">
+    <EntitySetMapping Name="Becario">
+      <EntityTypeMapping TypeName="FedisalModel.Becario">
+        <MappingFragment StoreEntitySet="Becario">
+          <ScalarProperty Name="idBecario" ColumnName="idBecario" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+          <ScalarProperty Name="idInformacion" ColumnName="idInformacion" />
+          <ScalarProperty Name="idPrograma" ColumnName="idPrograma" />
+          <ScalarProperty Name="idUniversidad" ColumnName="idUniversidad" />
+          <ScalarProperty Name="idCarrera" ColumnName="idCarrera" />
+          <ScalarProperty Name="idNivelEducativo" ColumnName="idNivelEducativo" />
+          <ScalarProperty Name="contrasenna" ColumnName="contrasenna" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BitacoraIncidentes">
+      <EntityTypeMapping TypeName="FedisalModel.BitacoraIncidentes">
+        <MappingFragment StoreEntitySet="BitacoraIncidentes">
+          <ScalarProperty Name="idBitacora" ColumnName="idBitacora" />
+          <ScalarProperty Name="idTipoIncidente" ColumnName="idTipoIncidente" />
+          <ScalarProperty Name="idBecario" ColumnName="idBecario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carrera">
+      <EntityTypeMapping TypeName="FedisalModel.Carrera">
+        <MappingFragment StoreEntitySet="Carrera">
+          <ScalarProperty Name="idCarrera" ColumnName="idCarrera" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ciclo">
+      <EntityTypeMapping TypeName="FedisalModel.Ciclo">
+        <MappingFragment StoreEntitySet="Ciclo">
+          <ScalarProperty Name="idCiclo" ColumnName="idCiclo" />
+          <ScalarProperty Name="anio" ColumnName="anio" />
+          <ScalarProperty Name="nCiclo" ColumnName="nCiclo" />
+          <ScalarProperty Name="evidenciaNotas" ColumnName="evidenciaNotas" />
+          <ScalarProperty Name="idBecario" ColumnName="idBecario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Desembolso">
+      <EntityTypeMapping TypeName="FedisalModel.Desembolso">
+        <MappingFragment StoreEntitySet="Desembolso">
+          <ScalarProperty Name="idDesembolso" ColumnName="idDesembolso" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="idTipoDesembolso" ColumnName="idTipoDesembolso" />
+          <ScalarProperty Name="idCiclo" ColumnName="idCiclo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InformacionPersonal">
+      <EntityTypeMapping TypeName="FedisalModel.InformacionPersonal">
+        <MappingFragment StoreEntitySet="InformacionPersonal">
+          <ScalarProperty Name="idInformacion" ColumnName="idInformacion" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="dui" ColumnName="dui" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="direccionResidencia" ColumnName="direccionResidencia" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NivelEducativo">
+      <EntityTypeMapping TypeName="FedisalModel.NivelEducativo">
+        <MappingFragment StoreEntitySet="NivelEducativo">
+          <ScalarProperty Name="idNivelEducativo" ColumnName="idNivelEducativo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nota">
+      <EntityTypeMapping TypeName="FedisalModel.Nota">
+        <MappingFragment StoreEntitySet="Nota">
+          <ScalarProperty Name="idNota" ColumnName="idNota" />
+          <ScalarProperty Name="nombreMateria" ColumnName="nombreMateria" />
+          <ScalarProperty Name="nota1" ColumnName="nota" />
+          <ScalarProperty Name="cumplioTercio" ColumnName="cumplioTercio" />
+          <ScalarProperty Name="idCiclo" ColumnName="idCiclo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PresupuestoBecas">
+      <EntityTypeMapping TypeName="FedisalModel.PresupuestoBecas">
+        <MappingFragment StoreEntitySet="PresupuestoBecas">
+          <ScalarProperty Name="idPresupuesto" ColumnName="idPresupuesto" />
+          <ScalarProperty Name="libro" ColumnName="libro" />
+          <ScalarProperty Name="colegiatura" ColumnName="colegiatura" />
+          <ScalarProperty Name="manutencion" ColumnName="manutencion" />
+          <ScalarProperty Name="matricula" ColumnName="matricula" />
+          <ScalarProperty Name="otros" ColumnName="otros" />
+          <ScalarProperty Name="trabajoGraduacion" ColumnName="trabajoGraduacion" />
+          <ScalarProperty Name="idBecario" ColumnName="idBecario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProgramaBecas">
+      <EntityTypeMapping TypeName="FedisalModel.ProgramaBecas">
+        <MappingFragment StoreEntitySet="ProgramaBecas">
+          <ScalarProperty Name="idPrograma" ColumnName="idPrograma" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoDesembolso">
+      <EntityTypeMapping TypeName="FedisalModel.TipoDesembolso">
+        <MappingFragment StoreEntitySet="TipoDesembolso">
+          <ScalarProperty Name="idTipoDesembolso" ColumnName="idTipoDesembolso" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoIncidente">
+      <EntityTypeMapping TypeName="FedisalModel.TipoIncidente">
+        <MappingFragment StoreEntitySet="TipoIncidente">
+          <ScalarProperty Name="idTipoIncidente" ColumnName="idTipoIncidente" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Universidad">
+      <EntityTypeMapping TypeName="FedisalModel.Universidad">
+        <MappingFragment StoreEntitySet="Universidad">
+          <ScalarProperty Name="idUniversidad" ColumnName="idUniversidad" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

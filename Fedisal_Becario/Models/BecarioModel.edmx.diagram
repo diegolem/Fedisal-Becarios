@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="87a1a272f6bf4243a76e92b21571fc09" Name="Diagram1">
+        <EntityTypeShape EntityType="FedisalModel.Becario" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FedisalModel.BitacoraIncidentes" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FedisalModel.Carrera" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FedisalModel.Ciclo" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FedisalModel.Desembolso" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FedisalModel.InformacionPersonal" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FedisalModel.NivelEducativo" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FedisalModel.Nota" Width="1.5" PointX="7.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FedisalModel.PresupuestoBecas" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FedisalModel.ProgramaBecas" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FedisalModel.TipoDesembolso" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FedisalModel.TipoIncidente" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FedisalModel.Universidad" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <AssociationConnector Association="FedisalModel.Becario_BitacoraIncidentes" ManuallyRouted="false" />
+        <AssociationConnector Association="FedisalModel.Becario_Ciclo" ManuallyRouted="false" />
+        <AssociationConnector Association="FedisalModel.Becario_PresupuestoBecas" ManuallyRouted="false" />
+        <AssociationConnector Association="FedisalModel.Carrera_Becario" ManuallyRouted="false" />
+        <AssociationConnector Association="FedisalModel.InformacionPersonal_Becario" ManuallyRouted="false" />
+        <AssociationConnector Association="FedisalModel.NivelEducativo_Becario" ManuallyRouted="false" />
+        <AssociationConnector Association="FedisalModel.ProgramaBecas_Becario" ManuallyRouted="false" />
+        <AssociationConnector Association="FedisalModel.Universidad_Becario" ManuallyRouted="false" />
+        <AssociationConnector Association="FedisalModel.TipoIncidente_BitacoraIncidentes" ManuallyRouted="false" />
+        <AssociationConnector Association="FedisalModel.Ciclo_Nota" ManuallyRouted="false" />
+        <AssociationConnector Association="FedisalModel.fk_desembolso_ciclo" ManuallyRouted="false" />
+        <AssociationConnector Association="FedisalModel.TipoDesembolso_Desembolso" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
