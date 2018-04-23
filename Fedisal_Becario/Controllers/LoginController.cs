@@ -16,7 +16,6 @@ namespace Fedisal_Becario.Controllers
         }
         [HttpPost]
         public ActionResult Logueo(Fedisal_Becario.Models.LoginViewModel logModel) {
-            bool login = false;
             using (FedisalEntities1 ctx = new FedisalEntities1() ) {
                 var query = (from log in ctx.Becario where logModel.Codigo == log.idBecario && logModel.Password == log.contrasenna select log).FirstOrDefault();
                 if(query == null) {

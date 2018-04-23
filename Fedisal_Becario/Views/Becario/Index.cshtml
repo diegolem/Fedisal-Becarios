@@ -1,23 +1,26 @@
-﻿
-@{
-    Layout = null;
-    if(Session["ID"] == null) {
+﻿@{
+    if (Session["ID"] == null)
+    {
         Response.Redirect("~/Login/Index");
     }
 }
-
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Fedisal - [Becarios]</title>
 </head>
 <body>
     <div> 
-    <h1>Iniciooooooo!!</h1>
-    <h3>Nombre de usuario: @Session["ID"].ToString()</h3>
-    <a href="@Url.Action("LogOut","Login")">Cerrar sesión</a>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-xs-6 col-sm-2"><h1>Fedisal</h1></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-2"><p class="lead">[Becarios]</p></div>
+        </div>
+    </div>
     </div>
 </body>
 </html>

@@ -10,24 +10,48 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Fedisal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio de Sesión","Index","Login")</li>
-                </ul>
+    @if(Session["ID"] == null) {
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Fedisal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicio de Sesión", "Index", "Login")</li>
+                    </ul>
                 
+                </div>
             </div>
         </div>
-    </div>
+    }
+    else
+    {
+    <style type="text/css">
+    .navbar{
+        background-color: #01579b;
+    }
+    </style>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <div class="col-lg-4"><img src="~/Content/img/logo.png" width="47px" class="img-circle"></div>
+                    <div class="col-lg-3">@Html.ActionLink("Fedisal", "Index", "Becario", new { area = "" }, new { @class = "navbar-brand" })</div>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Notas", "RegistroNotas", "Becario")</li>
+                        <li>@Html.ActionLink("Cerrar Sesión", "LogOut", "Login")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
     <div class="container body-content">
         @RenderBody()
         <hr />

@@ -219,6 +219,7 @@
     <Compile Include="Models\Nota.cs">
       <DependentUpon>BecarioModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BecarioModels.cs" />
     <Compile Include="Models\PresupuestoBecas.cs">
       <DependentUpon>BecarioModel.tt</DependentUpon>
     </Compile>
@@ -312,6 +313,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Becario\Index.cshtml" />
+    <Content Include="Views\Becario\Create.cshtml" />
+    <Content Include="Views\Becario\RegistrarNota.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
