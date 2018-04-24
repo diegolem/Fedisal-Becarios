@@ -11,13 +11,26 @@ namespace Fedisal_Becario.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Nota
     {
+        
         public int idNota { get; set; }
+        [Required]
+        [RegularExpression("^([A-Z]|[a-z]|[ñÑ])[a-zA-záéíóúÁÉÍÓÚÑñ 1-4]*$",ErrorMessage = "Ingrese solo letras..")]
+        [MinLength(3)]
+        [Display(Name = "Nombre Materia")]
         public string nombreMateria { get; set; }
+        [Required]
+        [RegularExpression("^(10|[0-9][,][0-9][0-9]|[0-9][,][0-9]|[0-9])$",ErrorMessage = "Ingrese una nota válida")]
+        [Display(Name = "Nota obtenida")]
         public Nullable<decimal> nota1 { get; set; }
+        [Required]
+        [Display(Name = "Cumplio Tercio superior")]
         public Nullable<bool> cumplioTercio { get; set; }
+        [Required]
+        [Display(Name = "Ciclo")]
         public Nullable<int> idCiclo { get; set; }
     
         public virtual Ciclo Ciclo { get; set; }

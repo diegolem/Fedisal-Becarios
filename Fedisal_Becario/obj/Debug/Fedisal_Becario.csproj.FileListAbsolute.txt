@@ -173,3 +173,4 @@ C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\es\Microsoft.O
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\obj\Debug\Fedisal_Becario.dll
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\obj\Debug\Fedisal_Becario.pdb
+C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\obj\Debug\Fedisal_Becario.csprojResolveAssemblyReference.cache

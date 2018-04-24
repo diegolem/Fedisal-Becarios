@@ -7,7 +7,8 @@
     <title>Fedisal - [Becarios]</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/alertify.min.css" />
 </head>
 <body>
     @if(Session["ID"] == null) {
@@ -41,11 +42,19 @@
             <div class="container">
                 <div class="navbar-header">
                     <div class="col-lg-4"><img src="~/Content/img/logo.png" width="47px" class="img-circle"></div>
-                    <div class="col-lg-3">@Html.ActionLink("Fedisal", "Index", "Becario", new { area = "" }, new { @class = "navbar-brand" })</div>
+                    <div class="col-lg-2">@Html.ActionLink("Fedisal", "Index", "Becario", new { area = "" }, new { @class = "navbar-brand" })</div>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Notas", "RegistroNotas", "Becario")</li>
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                Notas <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Ver notas", "index", "Notas")</li>
+                                <li>@Html.ActionLink("Registrar Nota", "create", "Notas")</li>
+                            </ul>
+                        </li>
                         <li>@Html.ActionLink("Cerrar Sesión", "LogOut", "Login")</li>
                     </ul>
                 </div>
@@ -59,9 +68,49 @@
             <p>&copy; @DateTime.Now.Year - Fedisal</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/alertify.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            document.getElementById('theadNotas').setAttribute("class", "btn-default white-text");
+            if ($('#NotasTable').length > 0) {
+                $('#NotasTable').DataTable({
+                    "language": {
+                        "sProcessing": "Procesando...",
+                        "sLengthMenu": "Mostrar _MENU_ registros",
+                        "sZeroRecords": "No se encontraron resultados",
+                        "sEmptyTable": "Ningún dato disponible en esta tabla",
+                        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                        "sInfoPostFix": "",
+                        "sSearch": "Buscar:",
+                        "sUrl": "",
+                        "sInfoThousands": ",",
+                        "sLoadingRecords": "Cargando...",
+                        "oPaginate": {
+                            "sFirst": "Primero",
+                            "sLast": "Último",
+                            "sNext": "Siguiente",
+                            "sPrevious": "Anterior"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                        }
+                    }
+                });
+            }});
+    </script>
+    @if (TempData["RegistrarN"] != null)
+    {
+    <script>
+            alertify.success("@TempData["RegistrarN"]");
+    </script>
+    }
 </body>
 </html>

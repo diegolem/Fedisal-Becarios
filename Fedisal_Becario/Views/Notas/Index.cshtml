@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Fedisal_Becario.Models.Nota>
+@{
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Fedisal - [Becarios]</title>
+</head>
+<body>
+
+    <br />
+    <div class="page-header">
+        <h1>Notas Ingresadas</h1>
+    </div>
+    @if (Model.Count() == 0)
+    {
+        <div class="alert alert-danger" role="alert">No hay ningun registro de notas!!</div>
+    }
+    else
+    {
+    <table class="table table-striped" id="NotasTable">
+        <thead id="theadNotas">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.nombreMateria)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nota1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cumplioTercio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ciclo)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombreMateria)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nota1)
+                    </td>
+                    <td>
+                        @(item.cumplioTercio.Equals(false) ? "No cumplio" : "Cumplio")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ciclo.nCiclo)
+                    </td>
+                </tr>
+                }
+        </tbody>
+    </table>
+    }
+</body>
+</html>
