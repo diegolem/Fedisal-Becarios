@@ -11,15 +11,22 @@ namespace Fedisal_Becario.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PresupuestoBecas
     {
         public int idPresupuesto { get; set; }
+        [Display(Name = "Libros")]
         public Nullable<decimal> libro { get; set; }
+        [Display(Name = "Colegiatura")]
         public Nullable<decimal> colegiatura { get; set; }
+        [Display(Name = "Manutención")]
         public Nullable<decimal> manutencion { get; set; }
+        [Display(Name = "Matrícula")]
         public Nullable<decimal> matricula { get; set; }
+        [Display(Name = "Otros")]
         public Nullable<decimal> otros { get; set; }
+        [Display(Name = "Trabajo de Graduación")]
         public Nullable<decimal> trabajoGraduacion { get; set; }
         public string idBecario { get; set; }
     

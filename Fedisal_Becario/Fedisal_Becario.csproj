@@ -176,6 +176,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotasController.cs" />
+    <Compile Include="Controllers\PresupuestoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -312,6 +313,7 @@
     <Content Include="Views\Notas\Index.cshtml" />
     <Content Include="Views\Ciclo\Create.cshtml" />
     <Content Include="Views\Ciclo\Index.cshtml" />
+    <Content Include="Views\Presupuesto\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

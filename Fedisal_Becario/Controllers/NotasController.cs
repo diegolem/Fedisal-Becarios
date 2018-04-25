@@ -38,6 +38,16 @@ namespace Fedisal_Becario.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idNota,nombreMateria,nota1,cumplioTercio,idCiclo")] Nota nota)
         {
+            var query = (from t in db.Nota where nota.nombreMateria == t.nombreMateria && nota.idCiclo == t.idCiclo select t).Count();
+            var cuenta = (from t in db.Nota where nota.nombreMateria == t.nombreMateria select t).Count();
+            if (query > 0)
+            {
+                ModelState.AddModelError("nombreMateria", "La nota ingresada ya existe");
+            }
+            if (cuenta > 0)
+            {
+                ModelState.AddModelError("nombreMateria", "La materia ingresada ya existe");
+            }
             String id = Session["ID"].ToString();
             if (ModelState.IsValid)
             {
