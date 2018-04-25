@@ -43,7 +43,7 @@ namespace Fedisal_Becario.Controllers
             {
                 db.Nota.Add(nota);
                 db.SaveChanges();
-                TempData["RegistrarN"] = "La nota se ingreso correctamente!!";
+                TempData["RegistroN"] = "La nota se ingreso correctamente";
                 return RedirectToAction("Index");
             }
             ViewBag.idCiclo = new SelectList(db.Ciclo.Where(x => x.idBecario.Equals(id)), "idCiclo", "nCiclo", nota.idCiclo);

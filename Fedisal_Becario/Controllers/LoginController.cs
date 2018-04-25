@@ -28,6 +28,7 @@ namespace Fedisal_Becario.Controllers
             }
         }
         public ActionResult LogOut() {
+            HttpContext.Session.RemoveAll();
             Session.Abandon();
             return RedirectToAction("Index","Login");
         }

@@ -55,6 +55,15 @@
                                 <li>@Html.ActionLink("Registrar Nota", "create", "Notas")</li>
                             </ul>
                         </li>
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                Ciclos <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Ver ciclos", "index", "Ciclo")</li>
+                                <li>@Html.ActionLink("Agregar ciclo", "create", "Ciclo")</li>
+                            </ul>
+                        </li>
                         <li>@Html.ActionLink("Cerrar Sesión", "LogOut", "Login")</li>
                     </ul>
                 </div>
@@ -77,8 +86,8 @@
     <script>
         $(document).ready(function () {
             document.getElementById('theadNotas').setAttribute("class", "btn-default white-text");
-            if ($('#NotasTable').length > 0) {
-                $('#NotasTable').DataTable({
+            if ($('#DataTable').length > 0) {
+                $('#DataTable').DataTable({
                     "language": {
                         "sProcessing": "Procesando...",
                         "sLengthMenu": "Mostrar _MENU_ registros",
@@ -104,12 +113,19 @@
                         }
                     }
                 });
-            }});
+            }
+        });
     </script>
-    @if (TempData["RegistrarN"] != null)
+    @if (TempData["RegistroC"] != null)
     {
     <script>
-            alertify.success("@TempData["RegistrarN"]");
+            alertify.success("@TempData["RegistroC"]");
+    </script>
+    }
+    @if (TempData["RegistroN"] != null)
+    {
+    <script>
+            alertify.success("@TempData["RegistroN"]");
     </script>
     }
 </body>

@@ -12,7 +12,14 @@ namespace Fedisal_Becario.Controllers
         // GET: Becario
         public ActionResult Index()
         {
-            return View();
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

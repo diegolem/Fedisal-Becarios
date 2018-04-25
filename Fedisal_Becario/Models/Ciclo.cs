@@ -11,7 +11,8 @@ namespace Fedisal_Becario.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Ciclo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,9 +23,17 @@ namespace Fedisal_Becario.Models
         }
     
         public int idCiclo { get; set; }
+        [Required]
+        [RegularExpression("^([20][0-9][0-9]|[2][0-9]{3})$",ErrorMessage = "Ingrese un año válido")]
+        [Display(Name = "Año")]
         public Nullable<decimal> anio { get; set; }
+        [Required]
+        [Range(1,4,ErrorMessage = "Ingrese un número de ciclo válido")]
+        [Display(Name = "Número de Ciclo")]
         public Nullable<int> nCiclo { get; set; }
+        [Display(Name = "Revisión de Notas")]
         public Nullable<bool> evidenciaNotas { get; set; }
+        [Display(Name = "Codigo del Becario")]
         public string idBecario { get; set; }
     
         public virtual Becario Becario { get; set; }
