@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Fedisal_Becario.Models.PresupuestoBecas>
-
 @{
     if (Session["ID"] == null)
     {
@@ -67,6 +66,7 @@
         }
     </tbody>
     </table>
+    <br />
     <div class="panel panel-info">
        <div class="panel-heading">
            <h3>Presupuestos Desglosados</h3>
@@ -80,11 +80,14 @@
             </ul>
             <p>Presupuesto Ejecutado</p>
             <ul class="list-group">
-                <li class="list-group-item">@(item.otros + item.trabajoGraduacion + item.matricula + item.colegiatura + item.manutencion + item.libro) </li>
+                <li class="list-group-item">
+                    @Html.Action("presupuestoEjecutado")
+                </li>
             </ul>
+                decimal sum = Convert.ToDecimal(item.otros + item.trabajoGraduacion + item.matricula + item.colegiatura + item.manutencion + item.libro);
             <p>Presupuesto por ejecutar</p>
             <ul class="list-group">
-                <li class="list-group-item">@(item.otros + item.trabajoGraduacion + item.matricula + item.colegiatura + item.manutencion + item.libro) </li>
+                <li class="list-group-item">@Html.Action("presupuestoPorEjecutar",new {suma = sum })</li>
             </ul>
                 }
         </div>

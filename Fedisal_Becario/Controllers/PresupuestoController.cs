@@ -21,7 +21,38 @@ namespace Fedisal_Becario.Controllers
             var presupuestoBecas = db.PresupuestoBecas.Where(p=>p.idBecario == id).Include(p => p.Becario);
             return View(presupuestoBecas.ToList());
         }
-
+        public decimal presupuestoEjecutado()
+        {
+            String id = Session["ID"].ToString();
+            var cicloId = db.Ciclo.Where(p=>p.idBecario == id);
+            foreach (var item in cicloId)
+            {
+                int codigoCiclo = item.idCiclo;
+                var desembolsos = db.Desembolso.Where(t => t.idCiclo == codigoCiclo).Sum(t=> t.monto);
+                if (desembolsos.Value > 0)
+                {
+                    return Convert.ToDecimal(desembolsos);
+                }
+            }
+            return 0;
+        }
+        public decimal presupuestoPorEjecutar(decimal suma)
+        {
+            decimal resultado = 0;
+            String id = Session["ID"].ToString();
+            var cicloId = db.Ciclo.Where(p => p.idBecario == id);
+            foreach (var item in cicloId)
+            {
+                int codigoCiclo = item.idCiclo;
+                var desembolsos = db.Desembolso.Where(t => t.idCiclo == codigoCiclo).Sum(t => t.monto);
+                if (desembolsos.Value > 0)
+                {
+                    resultado = suma - Convert.ToDecimal(desembolsos);
+                    return resultado;
+                }
+            }
+            return 0;
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
