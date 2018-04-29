@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Fedisal_Becario.Models.InformacionPersonal>
+
+@{
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <br />
+    <div class="page-header">
+        <h1 class="text-center">Datos Personales</h1>
+    </div>
+    <table class="table table-striped" id="DataTableDesembolso">
+        <thead id="theadNotas">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.nombres)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.apellidos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.dui)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fechaNacimiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.direccionResidencia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.correoElectronico)
+                </th>
+            </tr>
+            </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dui)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fechaNacimiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.direccionResidencia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.correoElectronico)
+                    </td>
+                    <td>
+                        <button class="btn btn-default text-success">@Html.ActionLink("Modificar Datos", "Edit", new { id = item.idInformacion })</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

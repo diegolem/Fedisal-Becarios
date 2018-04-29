@@ -23,6 +23,7 @@ namespace Fedisal_Becario.Controllers
                     return View("Index",logModel);
                 }else {
                     Session["ID"] = query.idBecario;
+                    Session["IDI"] = query.idInformacion;
                     return RedirectToAction("Index", "Becario");
                 }
             }

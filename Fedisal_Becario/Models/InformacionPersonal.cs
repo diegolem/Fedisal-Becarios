@@ -11,7 +11,8 @@ namespace Fedisal_Becario.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class InformacionPersonal
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,12 +22,33 @@ namespace Fedisal_Becario.Models
         }
     
         public int idInformacion { get; set; }
+        [Display(Name = "Nombre")]
+        [Required]
+        [RegularExpression("^([a-z]|[A-Z]|[ñÑ]|[áéíóúÁÉÍÓÚ])[A-Za-z áéíóúñÑÁÉÍÚÓ]*$",ErrorMessage = "Ingrese un nombre válido")]
         public string nombres { get; set; }
+        [Display(Name = "Apellido")]
+        [Required]
+        [RegularExpression("^([a-z]|[A-Z]|[ñÑ]|[áéíóúÁÉÍÓÚ])[A-Za-z áéíóúñÑÁÉÍÚÓ]*$", ErrorMessage = "Ingrese un apellido válido")]
         public string apellidos { get; set; }
+        [Display(Name = "DUI")]
+        [Required]
+        [RegularExpression("^[0-9]{8}[-][0-9]$", ErrorMessage = "Ingrese un DUI válido")]
         public string dui { get; set; }
+        [Display(Name = "Fecha de Nacimiento")]
+        [Required]
+        [RegularExpression("^19[8-9][0-9][/]([0][0-9]|[1][012])[/]([0][0-9]|[1][0-9]|[2][0-9]|[3][01])$")]
         public Nullable<System.DateTime> fechaNacimiento { get; set; }
+        [Display(Name = "Dirección")]
+        [Required]
+        [RegularExpression("^([a-z]|[A-Z]|[ñÑ]|[áéíóúÁÉÍÓÚ])[A-Za-z áéíóúñÑÁÉÍÚÓ0-9#,.:-]*$", ErrorMessage = "Ingrese una dirección válida")]
         public string direccionResidencia { get; set; }
+        [Display(Name = "Telefono")]
+        [Required]
+        [RegularExpression("^[267][0-9]{3}[-][0-9]{4}$", ErrorMessage = "Ingrese un telefono válido")]
         public string telefono { get; set; }
+        [Display(Name = "Correo Electronico")]
+        [Required]
+        [RegularExpression("^([A-Z]|[a-z]|[0-9]|[_.$#'*+-]|[áéíóúÁÉÍÓÚ])[A-Za-z0-9_.$#'*+áéíóúÁÉÍÓÚ-]*[@][A-Za-z0-9_.]*[.][a-zA-Z]*$", ErrorMessage = "Ingrese un correo válido")]
         public string correoElectronico { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -16,7 +16,6 @@
     <div class="page-header text-center">
         <h1>Presupuestos</h1>
     </div>
-    <hr />
     <table class="table" id="DataTable">
         <thead id="theadNotas">
             <tr>
@@ -69,11 +68,12 @@
     <br />
     <div class="panel panel-info">
        <div class="panel-heading">
-           <h3>Presupuestos Desglosados</h3>
+           <h3 class="text-center">Presupuestos Desglosados</h3>
        </div>
         <div class="panel-body">
                 @foreach (var item in Model)
                 {
+                    <h3>Programa de Becas: @(item.Becario.ProgramaBecas.nombre)</h3>
             <p>Presupuesto Inicial</p>
             <ul class="list-group">
                 <li class="list-group-item">@(item.otros + item.trabajoGraduacion + item.matricula + item.colegiatura + item.manutencion + item.libro) </li>

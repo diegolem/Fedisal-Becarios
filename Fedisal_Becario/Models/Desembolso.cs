@@ -11,13 +11,18 @@ namespace Fedisal_Becario.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Desembolso
     {
         public int idDesembolso { get; set; }
+        [Display(Name = "Monto")]
         public Nullable<decimal> monto { get; set; }
+        [Display(Name = "Fecha de Realización")]
         public Nullable<System.DateTime> fecha { get; set; }
+        [Display(Name = "Tipo de Desembolso")]
         public Nullable<int> idTipoDesembolso { get; set; }
+        [Display(Name = "Ciclo")]
         public int idCiclo { get; set; }
     
         public virtual Ciclo Ciclo { get; set; }
