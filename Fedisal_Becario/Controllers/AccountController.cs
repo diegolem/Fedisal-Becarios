@@ -244,23 +244,7 @@ namespace Fedisal_Becario.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            var user = await UserManager.FindByNameAsync(model.Email);
-            if (user == null)
-            {
-                // No revelar que el usuario no existe
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
-            AddErrors(result);
-            return View();
+            return RedirectToAction("Change", "Usuarios");
         }
 
         //

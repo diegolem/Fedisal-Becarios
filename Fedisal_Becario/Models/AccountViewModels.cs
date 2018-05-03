@@ -88,7 +88,6 @@ namespace Fedisal_Becario.Models
 
     public class ResetPasswordViewModel
     {
-        [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }

@@ -11,7 +11,8 @@ namespace Fedisal_Becario.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Becario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -30,6 +31,8 @@ namespace Fedisal_Becario.Models
         public Nullable<int> idUniversidad { get; set; }
         public Nullable<int> idCarrera { get; set; }
         public Nullable<int> idNivelEducativo { get; set; }
+        [Display(Name = "Contraseña")]
+        [Required(ErrorMessage = "El campo contraseña no puede ser vacío")]
         public string contrasenna { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -87,16 +87,16 @@ C:\Users\Diego Lemus\Desktop\Fedisal_Becario\Fedisal_Becario\obj\Debug\Fedisal_B
 C:\Users\Diego Lemus\Desktop\Fedisal_Becario\Fedisal_Becario\obj\Debug\Fedisal_Becario.dll
 C:\Users\Diego Lemus\Desktop\Fedisal_Becario\Fedisal_Becario\obj\Debug\Fedisal_Becario.pdb
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\csc.exe
-C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\VBCSCompiler.exe
+C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\Microsoft.CSharp.Core.targets
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\System.Reflection.Metadata.dll
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\vbc.exe
-C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\VBCSCompiler.exe
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\Fedisal_Becario.dll.config
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\Fedisal_Becario.dll
@@ -173,4 +173,3 @@ C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\es\Microsoft.O
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\obj\Debug\Fedisal_Becario.dll
 C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\obj\Debug\Fedisal_Becario.pdb
-C:\Users\Diego Lemus\Desktop\Fedisal-Becarios\Fedisal_Becario\obj\Debug\Fedisal_Becario.csprojResolveAssemblyReference.cache

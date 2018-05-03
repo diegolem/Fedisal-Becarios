@@ -11,71 +11,74 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Fedisal - [Becarios]</title>
 </head>
 <body>
-
     <br />
     <div class="page-header">
         <h1 class="text-center">Datos Personales</h1>
     </div>
-    <table class="table table-striped" id="DataTableDesembolso">
-        <thead id="theadNotas">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.nombres)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.apellidos)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.dui)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.fechaNacimiento)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.direccionResidencia)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.telefono)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.correoElectronico)
-                </th>
-            </tr>
-            </thead>
-        <tbody>
+
+    <div class="jumbotron">
+        <h2 class="text-center">Datos</h2>
+        <p><b>@Html.DisplayNameFor(model => model.nombres): </b>@foreach (var item in Model)
+        {
+            @Html.DisplayFor(modelItem => item.nombres)
+        }</p>
+        <p>
+            <b>@Html.DisplayNameFor(model => model.apellidos): </b>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.nombres)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.apellidos)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.dui)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.fechaNacimiento)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.direccionResidencia)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.telefono)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.correoElectronico)
-                    </td>
-                    <td>
-                        <button class="btn btn-default text-success">@Html.ActionLink("Modificar Datos", "Edit", new { id = item.idInformacion })</button>
-                    </td>
-                </tr>
+                @Html.DisplayFor(modelItem => item.apellidos)
             }
-        </tbody>
-    </table>
+        </p>
+        <p>
+            <b>@Html.DisplayNameFor(model => model.dui): </b>
+            @foreach (var item in Model)
+            {
+                @Html.DisplayFor(modelItem => item.dui)
+            }
+        </p>
+        <p>
+            <b>@Html.DisplayNameFor(model => model.fechaNacimiento):</b>
+            @foreach (var item in Model)
+            {
+                @Html.DisplayFor(modelItem => item.fechaNacimiento)
+            }
+        </p>
+        <p>
+            <b>@Html.DisplayNameFor(model => model.direccionResidencia):</b>
+            @foreach (var item in Model)
+            {
+                @Html.DisplayFor(modelItem => item.direccionResidencia)
+            }
+        </p>
+        <p>
+            <b>@Html.DisplayNameFor(model => model.telefono):</b>
+            @foreach (var item in Model)
+            {
+                @Html.DisplayFor(modelItem => item.telefono)
+            }
+        </p>
+        <p>
+            <b>@Html.DisplayNameFor(model => model.correoElectronico):</b>
+            @foreach (var item in Model)
+            {
+                @Html.DisplayFor(modelItem => item.correoElectronico)
+            }
+        </p>
+        <div class="row">
+            <div class="col-md-5">&nbsp;</div>
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <p><button class="btn btn-default btn-lg text-success">@Html.ActionLink("Modificar Datos", "Edit", new { id = item.idInformacion })</button></p>
+                </div>
+                <div class="col-md-3">
+                    <p><button class="btn btn-default btn-lg text-success">@Html.ActionLink("Cambiar Contraseña", "Change", "Usuarios")</button></p>
+                </div>
+            }
+        </div>
+    </div>
 </body>
 </html>

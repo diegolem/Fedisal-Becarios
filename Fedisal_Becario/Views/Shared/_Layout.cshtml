@@ -97,6 +97,27 @@
                 </div>
             </div>
         </div>
+        <style type="text/css">
+        .jumbotron {
+          padding: 30px;
+          margin-bottom: 30px;
+          font-size: 21px;
+          font-weight: 200;
+          line-height: 2.1428571435;
+          color: inherit;
+          background-color: #cfd8dc;
+        }
+
+        .jumbotron h2 {
+          line-height: 1;
+          color: #263238;
+        }
+
+        .jumbotron p {
+          line-height: 1.4;
+          color:#263238;
+        }
+        </style>
     }
     <div class="container body-content">
         @RenderBody()
@@ -111,9 +132,8 @@
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            document.getElementById('theadNotas').setAttribute("class", "btn-default white-text");
-            document.getElementById('theadGastos').setAttribute("class", "btn-default white-text");
             if ($('#DataTable').length > 0) {
+                document.getElementById('theadPresupuesto').setAttribute("class", "btn-default white-text");
                 $('#DataTable').DataTable({
                     "language": {
                         "sProcessing": "Procesando...",
@@ -141,7 +161,37 @@
                     }
                 });
             }
+            if ($('#DataTableCiclo').length > 0) {
+                document.getElementById('theadCiclos').setAttribute("class", "btn-default white-text");
+                $('#DataTableCiclo').DataTable({
+                    "language": {
+                        "sProcessing": "Procesando...",
+                        "sLengthMenu": "Mostrar _MENU_ registros",
+                        "sZeroRecords": "No se encontraron resultados",
+                        "sEmptyTable": "Ningún dato disponible en esta tabla",
+                        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                        "sInfoPostFix": "",
+                        "sSearch": "Buscar:",
+                        "sUrl": "",
+                        "sInfoThousands": ",",
+                        "sLoadingRecords": "Cargando...",
+                        "oPaginate": {
+                            "sFirst": "Primero",
+                            "sLast": "Último",
+                            "sNext": "Siguiente",
+                            "sPrevious": "Anterior"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                        }
+                    }
+                });
+            }
             if ($('#DataTableNota').length > 0) {
+                document.getElementById('theadNotas').setAttribute("class", "btn-default white-text");
                 $('#DataTableNota').DataTable({
                     "language": {
                         "sProcessing": "Procesando...",
@@ -171,6 +221,7 @@
                 });
             } 
             if ($('#DataTableDesembolso').length > 0) {
+                document.getElementById('theadDesembolso').setAttribute("class", "btn-default white-text");
                 $('#DataTableDesembolso').DataTable({
                     "language": {
                         "sProcessing": "Procesando...",
@@ -214,6 +265,24 @@
     <script>
             alertify.success("@TempData["RegistroN"]");
     </script>
+    }
+    @if (TempData["CambiarD"] != null)
+    {
+        <script>
+            alertify.success("@TempData["CambiarD"]");
+        </script>
+    }
+    @if (TempData["ErrorC"] != null)
+    {
+        <script>
+            alertify.error("@TempData["ErrorC"]");
+        </script>
+    }
+    @if (TempData["cambiarC"] != null)
+    {
+        <script>
+            alertify.success("@TempData["cambiarC"]");
+        </script>
     }
 </body>
 </html>

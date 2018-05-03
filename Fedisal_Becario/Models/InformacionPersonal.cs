@@ -34,9 +34,6 @@ namespace Fedisal_Becario.Models
         [Required]
         [RegularExpression("^[0-9]{8}[-][0-9]$", ErrorMessage = "Ingrese un DUI válido")]
         public string dui { get; set; }
-        [Display(Name = "Fecha de Nacimiento")]
-        [Required]
-        [RegularExpression("^19[8-9][0-9][/]([0][0-9]|[1][012])[/]([0][0-9]|[1][0-9]|[2][0-9]|[3][01])$")]
         public Nullable<System.DateTime> fechaNacimiento { get; set; }
         [Display(Name = "Dirección")]
         [Required]
