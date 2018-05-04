@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/alertify.min.css" />
 </head>
 <body>
+    <style type="text/css">
+        .alertify-notifier .ajs-message.ajs-error{
+            color: white;
+        }
+        .alertify-notifier .ajs-message.ajs-success{
+            color: white;
+        }
+    </style>
     @if(Session["ID"] == null) {
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -282,6 +290,18 @@
     {
         <script>
             alertify.success("@TempData["cambiarC"]");
+        </script>
+    }
+    @if (TempData["contrasennaE"] != null)
+    {
+        <script>
+            alertify.success("@TempData["contrasennaE"]");
+        </script>
+    }
+    @if (TempData["contrasennaF"] != null)
+    {
+        <script>
+            alertify.error("@TempData["contrasennaF"]");
         </script>
     }
 </body>
