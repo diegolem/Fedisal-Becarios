@@ -27,7 +27,7 @@ namespace Fedisal_Becario.Controllers
         public ActionResult Create()
         {
             String id = Session["ID"].ToString();
-            ViewBag.idCiclo = new SelectList(db.Ciclo.Where(x=>x.idBecario.Equals(id)), "idCiclo", "nCiclo");
+            ViewBag.idCiclo = new SelectList(db.Ciclo.Where(x=>x.idBecario.Equals(id) && x.evidenciaNotas == false), "idCiclo", "nCiclo");
             return View();
         }
 
@@ -56,7 +56,7 @@ namespace Fedisal_Becario.Controllers
                 TempData["RegistroN"] = "La nota se ingreso correctamente";
                 return RedirectToAction("Index");
             }
-            ViewBag.idCiclo = new SelectList(db.Ciclo.Where(x => x.idBecario.Equals(id)), "idCiclo", "nCiclo", nota.idCiclo);
+            ViewBag.idCiclo = new SelectList(db.Ciclo.Where(x => x.idBecario.Equals(id) && x.evidenciaNotas == false), "idCiclo", "nCiclo", nota.idCiclo);
             return View(nota);
         }
         protected override void Dispose(bool disposing)
